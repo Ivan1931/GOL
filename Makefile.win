@@ -1,0 +1,29 @@
+# Project: sdl_test
+# Makefile created by Dev-C++ 5.3.0.4
+
+CPP      = g++.exe -D__DEBUG__
+CC       = gcc.exe -D__DEBUG__
+WINDRES  = windres.exe
+OBJ      = main.o $(RES)
+LINKOBJ  = main.o $(RES)
+LIBS     = -L"D:/IDE/Dev-Cpp/MinGW32/lib" -L"D:/Librarys/SDL/SDL-1.2.15/lib" -static-libstdc++ -static-libgcc -lmingw32 -lSDLmain -lSDL -mwindows -lmingw32 -lSDLmain -lSDL  -g3
+INCS     = -I"D:/IDE/Dev-Cpp/MinGW32/include" -I"C:/Users/Jonah/Documents/FAC/ConwaysGameOfLife" -I"D:/Librarys/SDL/SDL-1.2.15/include"
+CXXINCS  = -I"D:/IDE/Dev-Cpp/MinGW32/include" -I"D:/Librarys/SDL/SDL-1.2.15/include"
+BIN      = sdl_test.exe
+CXXFLAGS = $(CXXINCS)  -g3
+CFLAGS   = $(INCS)  -g3
+RM       = rm -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before $(BIN) all-after
+
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CC) $(LINKOBJ) -o $(BIN) $(LIBS)
+
+main.o: main.c
+	$(CC) -c main.c -o main.o $(CFLAGS)
